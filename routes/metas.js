@@ -37,9 +37,12 @@ const { body, validationResult } = require('express-validator');
 // ]
 
 /* GET users listing. */
+
+const table = "metas6";
+
 router.get('/', function(req, res, next) {
   // res.send(metas);
-  pedirTodas('metas',(err,metas) => {
+  pedirTodas(table,(err,metas) => {
     if(err){
       return next(err);
     }
@@ -55,7 +58,7 @@ router.get('/:id',function(req,res,next){
   // }
   // res.send(meta);
   const id = req.params.id;
-  pedir('metas',id,(err,meta) => {
+  pedir(table,id,(err,meta) => {
     if(err){
       return next(err);
     }
@@ -80,7 +83,7 @@ function(req,res,next){
   }
 
   const nuevaMeta = req.body;
-  crear('metas',nuevaMeta,(err,meta) => {
+  crear(table,nuevaMeta,(err,meta) => {
     if(err){
       return next(err);
     }
@@ -107,14 +110,14 @@ router.put('/:id',function(req,res,next){
     return res.sendStatus(409);
   }
 
-  pedir('metas',id,(err,meta) => {
+  pedir(table,id,(err,meta) => {
     if(err){
       return next(err);
     }
     if(!meta.length){
       return res.sendStatus(404);
     }
-    actualizar('metas',body,id,(err,meta) => {
+    actualizar(table,body,id,(err,meta) => {
       if(err){
         return next(err);
       }
@@ -137,7 +140,7 @@ router.delete('/:id',function(req,res,next){
 //   res.sendStatus(204);
 // });
   const id = req.params.id; 
-  pedir('metas',id,(err,meta) => {
+  pedir(table,id,(err,meta) => {
     if(err){
       return next(err);
     }
@@ -145,7 +148,7 @@ router.delete('/:id',function(req,res,next){
       return res.sendStatus(404);
   }
 
-  eliminar('metas',id,(err,meta) => {   
+  eliminar(table,id,(err,meta) => {   
     res.sendStatus(204);
   });
 });

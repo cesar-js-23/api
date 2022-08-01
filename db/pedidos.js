@@ -25,7 +25,6 @@ function crear (tabla,item,callback){
     const propiedades = keys.join(', ');
     const valores = keys.map(key => `'${item[key]}'`).join(', ');
     let query = `INSERT INTO ${tabla} (${propiedades}) VALUES(${valores}`;
-    console.log(query)
     db.any(`INSERT INTO ${tabla} (${propiedades}) VALUES(${valores}) returning *`)
         .then(([resultado]) => {
             callback(null, resultado);
@@ -40,7 +39,7 @@ function actualizar(tabla,item,id,callback){
     const keys = Object.keys(item);
     const actualizaciones = keys.map(key => `${key} = '${item[key]}' `).join(', ');
     const sql = `UPDATE ${tabla} SET ${actualizaciones} WHERE id = ${id} returning *`;
-    console.log(sql);
+    
     db.any(sql)
         .then(([resultado]) => {
             callback(null, resultado);
@@ -52,7 +51,7 @@ function actualizar(tabla,item,id,callback){
 
 function eliminar(tabla,id,callback){
     const sql = `DELETE FROM ${tabla} WHERE id = ${id} `;
-    console.log(sql);
+    
     db.any(sql)
         .then(() => {
             callback(null);
