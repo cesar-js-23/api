@@ -11,7 +11,7 @@ function pedirTodas(tabla,callback){
 };
 
 function pedir(tabla,id,callback){
-    db.any(`SELECT * FROM ${tabla} where id = ${id} `)
+    db.any(`SELECT * FROM ${tabla} where id = ${id} `)        
         .then(resultado => {
             callback(null, resultado);
         })

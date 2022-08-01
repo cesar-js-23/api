@@ -13,7 +13,9 @@
     "http-errors": "~1.6.3",
     "jade": "^0.29.0",
     "morgan": "~1.9.1",
-    "pg-promise": "^10.11.1"
+    "pg": "^8.7.1",
+    "pg-promise": "^10.11.1",
+    "serve": "^14.0.1"
   },
   "devDependencies": {
     "dotenv": "^16.0.1",

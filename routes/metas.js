@@ -38,7 +38,7 @@ const { body, validationResult } = require('express-validator');
 
 /* GET users listing. */
 
-const table = "metas6";
+const table = "metas";
 
 router.get('/', function(req, res, next) {
   // res.send(metas);
